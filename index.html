@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+           <style>
+               
+               *{
+                   font-family: sans-serif;
+                   margin:0;
+                   padding:0;
+                   box-sizing: border-box;
+               }
+               body{
+                   background-color: rgba(0,0,0,0.1);
+               }
+               h2
+               {
+                   border-left: 5px solid red;
+                   padding: 5px;
+                   transition: 3s;
+                   letter-spacing: 2px;
+               }
+               h2:hover{
+                   transform:rotate(360deg);
+               }
+                  
+               .container
+               {
+                   width: 100vw;
+                   height: 100vh;
+                   display: flex;
+                   flex-direction: column;
+                   justify-content: center;
+                   align-items: center;
+               }
+               img 
+               {
+                   width: 100px;
+                   height: 120px;
+                   border-radius: 50%;
+                   margin-bottom: 15px;
+                   box-shadow: 3px 3px 3px rgb(231, 158, 158);
+                   transition: 1s;
+               }
+               img:hover{
+                   transform:scale(1.1);
+               }
+               .poster
+               {
+                   margin-top: 100px;
+                   display:flex;
+                   flex-direction: column;
+                   justify-content: center;
+                   align-items: center;
+                   background-color: white;
+                   padding:20px 40px;
+                   box-shadow: 5px 5px 5px 5px grey;
+                   min-width: 540px;
+                   max-width: 540px;
+                   min-height: 360px;
+                  
+               }
+               .name
+               {
+                   letter-spacing: 2px;
+                   margin-bottom: 10px;
+                   font-weight: bold;
+               }
+               .job
+               {
+                   color:red;
+                   margin-bottom: 10px;
+                   letter-spacing: 2px;
+                   
+               }
+               .text
+               {
+                   font-size: 0.8em;
+                   margin-bottom: 10px;
+               }
+              .fas
+              {
+                  font-size: 1.2em;
+                  color: red;
+                  margin: 10px;
+               
+              }
+              .fas:hover{
+                 transform:scale(1.1);
+              }
+              button{
+                  padding: 5px 10px;
+                  font-size: 0.8em;
+                  border-radius: 5px;
+                  background-color: red;
+                  color:black;
+                  letter-spacing: 2px;
+              }
+
+           </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Our Reviews</h2>
+            <div class="poster">
+                <img src="rdj.jpg">
+                <p class="name">Robert Downey Junior</p>
+                <p class="job">Actor</p>
+                <p class="text">
+                    I'm baby meggings twee health goth +1 Bicyle rights tumeric chartruese<br>
+                    before they sold out chambray pop-up.Sham humblebreg picked<br>
+                    coloring book salvai hoodie.cold-pressed four dollar toast 
+                </p>
+                <div class="btn">
+                    <i class="fas fa-angle-left" id="left"></i>
+                    <i class="fas fa-angle-right" id="right"></i>
+                </div>
+                <button>Suprise Me</button>
+            </div>
+        </div>
+        <script>
+            const content =
+            [
+                  {
+                     picture:"mazia.jpg",
+                     name:"Mazia Kjelberg",
+                     job:"Youtuber",
+                     cmt:"It been a long day without you my friend and i tell you all about i\n about it when i see again it come a long way from where we began oh  I tell you all<br> about it when i see you again damn who know all the plan",
+
+                          
+                  },
+                  {
+                      picture:"dd.jpg",
+                      name:"Elizabeth Olsen",
+                      job: "Model",
+                      cmt:"I am only one call alway i will there to save the day superman got nothing thing on me i am only one call way come again i just heard you found someone you have been looking we don't talk anymore like we us",
+                  },
+                  {
+                      picture:"rdj.jpg",
+                      name:"Robert Downey Junior",
+                      job: "Actor",
+                      cmt:"   I'm baby meggings twee health goth +1 Bicyle rights tumeric chartruese<br  before they sold out chambray pop-up.Sham humblebreg picked coloring book salvai hoodie.cold-pressed four dollar toast ",
+                  },
+                
+
+
+            ]
+
+            const random = document.querySelector("button");
+            const image = document.querySelector("img");
+            const username= document.querySelector(".name");
+            const role = document.querySelector(".job");
+            const comment = document.querySelector(".text");
+            const main_btn = document.querySelector(".btn");
+            const foward = document.querySelector(".fa-angle-right");
+            const backward = document.querySelector(".fa-angle-left");
+            let counter =  0;
+
+            function input (i)
+            {
+                image.src = content[i].picture;
+                 username.textContent = content[i].name;
+                 role.textContent= content[i].job;
+                 comment.textContent = content[i].cmt;
+            }
+
+            function set_random()
+            {
+                return Math.floor(Math.random()*content.length);
+            }
+         
+
+
+
+
+            main_btn.addEventListener("click",function(e){
+                if (e.target.id==="right" )
+                {
+                    counter++;
+                    if(counter>content.length-1)
+                    {
+                        counter = 0 ;
+                        input (counter);
+                        console.log(counter);
+                      
+                    }
+                    else
+                    {
+                      
+                    input (counter);
+                    console.log(counter);
+                      
+                   
+                    }
+                   
+                }
+                else
+                {
+                   if (counter===0)
+                   {
+                       counter = content.length-1 ;
+                       input (counter);
+                       console.log(counter);
+                      
+                   }
+                   else
+                   {
+                      counter--;
+                       input(counter);
+                      
+                       console.log(counter);
+                      
+                   }
+                }
+            })
+
+
+            random.addEventListener("click",function(){
+                input (set_random());
+            })
+        </script>
+    </body>
+</html>
